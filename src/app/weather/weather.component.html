@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <form [formGroup]="weatherForm" #wForm>
+        <div class="row overflow-y-auto col-12 py-3 max-vh-100">
+            <div class="col-sm-4 pt-3" formArrayName="items"
+                *ngFor="let item of weatherForm.get('items').controls; let i = index">
+                <div class="panel panel-info py-3" [formGroupName]="i">
+                    <div class="panel-body">
+                        <!-- <div class="empty-panel pointer text-center text-white" (click)="enablePanel(i)" id="{{'empty-'+i}}">Panel {{i+1}}</div> -->
+                        <div class="panel-content">
+                        <div class="myForm">
+                            <div class="row col-12 pr-0">
+                                <div class="col-sm-9">
+                                    <input type="text" id="{{'city'+ i}}" placeholder="City" name="cityName" formControlName="cityName"
+                                    autocomplete="off" (change)="getWeather($event.target.value, i)">
+                                </div>
+                                <div class="col-sm-3 p-0">
+                                    <button (click)="setFocus(i)">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="weatherDataList">
+                            <ng-container *ngFor="let row of weatherDataList;">
+                                <div class="weather" *ngIf="row.id == i">
+                                    <h1 class="city">{{row.city}}</h1>
+                                    <img [src]="'../../assets/animated/' + row.iconName" alt="">
+                                    <h2 class="temp">{{row.temp}}&deg; {{row.desc}}</h2>
+                                    <h3 class="desc"> {{row.humidity}}% Humidity</h3>
+                                </div>
+                                
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                    <div class="error-msg" id="{{'error-' + i}}"></div>
+                        <!-- <div class="weather" *ngIf="!weatherDataList.length">
+                            <h1 class="city">No Results</h1>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
