@@ -9,11 +9,11 @@
                         <div class="panel-content">
                         <div class="myForm">
                             <div class="row col-12 pr-0">
-                                <div class="col-sm-9">
+                                <div class="col-sm-8 pb-2">
                                     <input type="text" id="{{'city'+ i}}" placeholder="City" name="cityName" formControlName="cityName"
                                     autocomplete="off" (change)="getWeather($event.target.value, i)">
                                 </div>
-                                <div class="col-sm-3 p-0">
+                                <div class="col-sm-4">
                                     <button (click)="setFocus(i)">Edit</button>
                                 </div>
                             </div>
@@ -31,9 +31,6 @@
                         </ng-container>
                     </div>
                     <div class="error-msg" id="{{'error-' + i}}"></div>
-                        <!-- <div class="weather" *ngIf="!weatherDataList.length">
-                            <h1 class="city">No Results</h1>
-                        </div> -->
                     </div>
                 </div>
             </div>

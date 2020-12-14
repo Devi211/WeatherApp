@@ -37,9 +37,6 @@ export class WeatherComponent implements OnInit {
       const items = this.weatherForm.get("items") as FormArray;
       this.weatherDataList.forEach((x, index) => {        
         items.controls[x.id].get('cityName').setValue(x.city);
-        // document.getElementById('empty-' + index).innerHTML = '';
-        // document.getElementById('panel-' + index).classList.remove('hide');
-        // document.getElementById('panel-' + index).classList.add('op-1');
       });
     }
   }
@@ -50,7 +47,6 @@ export class WeatherComponent implements OnInit {
       this.weatherDataList.forEach((x, index) => {
         this.getWeather(x.city, x.id);
         items.controls[x.id].get('cityName').setValue(x.city);
-        console.log(index++);
       });
     }
   }
@@ -64,12 +60,6 @@ export class WeatherComponent implements OnInit {
   setFocus(i) {
     document.getElementById('city' + i).focus();
   }
-
-  // enablePanel(index) {
-  //   document.getElementById('empty-' + index).innerHTML = '';
-  //   document.getElementById('panel-' + index).classList.remove('hide');
-  //   document.getElementById('panel-' + index).classList.add('op-1');
-  // }
 
   weatherGroup() {
     this.items = this.weatherForm.get("items") as FormArray;
